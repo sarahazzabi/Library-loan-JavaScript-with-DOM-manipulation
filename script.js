@@ -31,11 +31,16 @@ var adminremove = document.getElementsByClassName('remove-item')
      var adminupdate = document.getElementsByClassName('update-item')
      for (var i = 0; i < adminupdate.length; i++) adminupdate[i].addEventListener('click', updateItem)
 }
+    // Creating new file reader to read new item image file
+    var oFReader = new FileReader();
+    oFReader.onload = function (oFREvent) {
+    document.getElementById("uploadPreview").src = oFREvent.target.result;
+    }
 
-function showForm() {
+    function showForm() {
     var registerForm = document.getElementById('id01')
     registerForm.style.display='block'  
-}
+    }
 
 function showEngTitle(){
     var itemList = document.getElementsByClassName('availableList')[0]
@@ -262,4 +267,77 @@ function validateForm(){
             updatetarget.parentElement.getElementsByClassName('due-date')[0].innerHTML = targetduedate
     
         }
+
+        function newItemForm(){
+            document.getElementsByClassName('add-newitem')[0].style.display='none' 
+            document.getElementsByClassName('newItemForm')[0].style.display='block'
+            var addnewItembtn = document.getElementsByClassName('add-newitemaction')[0]
+            addnewItembtn.addEventListener('click', newItemAction)
+    
+        }
+      
+    
+            function PreviewImage() {
+                var oFReader = new FileReader();
+                oFReader.readAsDataURL(document.getElementById("imgSrc").files[0]); 
+        
+                oFReader.onload = function (oFREvent) {
+                    document.getElementById("uploadPreview").src = oFREvent.target.result;
+                }
+            }
+    
+        function newItemAction(){
+            var newtitlefield = document.getElementById("newtitle").value
+            var newtitlefieldFr = document.getElementById("frnewtitle").value
+            var newtitlefieldIt = document.getElementById("itnewtitle").value
+            var newduedatefield = document.getElementById("newduedate").value
+            var newtypefield = document.getElementById("newtype").value
+            var itemimg = document.getElementById('uploadPreview').src
+            
+            var newRow = document.createElement('li')
+            newRow.classList.add("item")
+            var ul = document.getElementsByClassName('availableList')[0] // parent node
+                         
+             var newRowContents = `
+                <div class= "card">
+                <img class= "imageSrc" src = "${itemimg}" style="width:100%"> 
+                <div class="imgcontainer"> 
+                <span class="title">${newtitlefield}</span>
+                <span lang="fr" class="frtitle" style="display: none;">${newtitlefieldFr}</span>
+                <span lang="it" class="ittitle" style="display: none;">${newtitlefieldIt}</span>  
+                <span class="due-date" style="display: none;">${newduedatefield}</span>
+                <span class="item-type">${newtypefield.toUpperCase()}</span>
+                <button type="button" id = "user" style= "display: none;" class="btn add-item">Add </button>
+                <button type="button"  id = "admin" class="btn remove-item">Remove </button>
+                <button type="button" id = "admin"  class="btn update-item">Update duedate </button>
+                </div>
+                </div>`
+             newRow.innerHTML = newRowContents
+             ul.append(newRow)
+             document.getElementById("newtitle").value = ''
+             document.getElementById("frnewtitle").value = ''
+             document.getElementById("itnewtitle").value = ''
+             document.getElementById("newduedate").value = ''
+             document.getElementById("newtype").value = ''
+             document.getElementById('uploadPreview').src = "images/preview-icon.png"
+             document.getElementById('imgSrc').value = ''
+             document.getElementsByClassName('add-newitemaction')[0].removeEventListener("click", newItemAction)
+            
+             document.getElementsByClassName('add-newitemaction')[0].addEventListener('click', newItemAction)
+            
+             var addbtn = document.getElementsByClassName('add-item')
+            for (var i = 0; i < addbtn.length; i++) 
+            {
+                addbtn[i].addEventListener('click', addToBasketClicked)
+            }
+            var adminremove = document.getElementsByClassName('remove-item')
+            for (var i = 0; i < adminremove.length; i++){
+                 adminremove[i].addEventListener('click', removeItem)
+            }
+            var adminupdate = document.getElementsByClassName('update-item')
+            for (var i = 0; i < adminupdate.length; i++) {
+            adminupdate[i].addEventListener('click', updateItem)
+            }
+        }
+    
     
