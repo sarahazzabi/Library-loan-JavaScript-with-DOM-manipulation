@@ -7,6 +7,11 @@ if (document.readyState == 'loading') {
 function ready() {
 
     window.addEventListener('mousewheel', showForm, false)
+    // By defult show english translation
+    showEngTitle()
+    document.getElementById('eng').addEventListener('click', showEngTitle)  
+    document.getElementById('fre').addEventListener('click', showFrTitle)  
+    document.getElementById('itl').addEventListener('click', showItTitle)
 
 var submitbtn = document.getElementsByClassName('registerbtn')
     submitbtn[0].addEventListener('click', validateForm)
@@ -20,6 +25,38 @@ for (var i = 0; i < addbtn.length; i++) {
 
 document.getElementsByClassName('btn-checkout')[0].addEventListener('click', checkoutClicked)
 }
+
+function showEngTitle(){
+    var itemList = document.getElementsByClassName('availableList')[0]
+    var itemli = itemList.getElementsByClassName('item')
+    for (var i = 0; i < itemli.length; i++) {
+     itemli[i].getElementsByClassName('title')[0].style.display = 'block'
+     itemli[i].getElementsByClassName('frtitle')[0].style.display = 'none'
+     itemli[i].getElementsByClassName('ittitle')[0].style.display = 'none'
+    }
+}
+
+function showItTitle(){
+ var itemList = document.getElementsByClassName('availableList')[0]
+ var itemli = itemList.getElementsByClassName('item')
+ for (var i = 0; i < itemli.length; i++) {
+  itemli[i].getElementsByClassName('title')[0].style.display = 'none'
+  itemli[i].getElementsByClassName('frtitle')[0].style.display = 'none'
+  itemli[i].getElementsByClassName('ittitle')[0].style.display = 'block'
+ }
+}
+
+function showFrTitle(){
+ var itemList = document.getElementsByClassName('availableList')[0]
+ var itemli = itemList.getElementsByClassName('item')
+ for (var i = 0; i < itemli.length; i++) {
+  itemli[i].getElementsByClassName('title')[0].style.display = 'none'
+  itemli[i].getElementsByClassName('frtitle')[0].style.display = 'block'
+  itemli[i].getElementsByClassName('ittitle')[0].style.display = 'none'
+ }
+}
+
+
 // Print msg error on registration form
 function printError(elemId, hintMsg) {
     document.getElementById(elemId).innerHTML = hintMsg;
