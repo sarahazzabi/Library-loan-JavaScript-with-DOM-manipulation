@@ -5,6 +5,7 @@ if (document.readyState == 'loading') {
 }
 
 function ready() {
+    isnotadmin()
 
     window.addEventListener('mousewheel', showForm, false)
     // By defult show english translation
@@ -35,6 +36,26 @@ var adminremove = document.getElementsByClassName('remove-item')
     var oFReader = new FileReader();
     oFReader.onload = function (oFREvent) {
     document.getElementById("uploadPreview").src = oFREvent.target.result;
+    }
+
+    function isnotadmin(){
+        var admin = document.querySelectorAll("[id='admin']")
+        for(var i = 0; i < admin.length; i++) 
+        admin[i].style.display='none'
+
+        var user = document.querySelectorAll("[id='user']")
+        for(var i = 0; i < user.length; i++) 
+        user[i].style.display='block'
+        
+    }
+    function isadmin(){
+        var admin = document.querySelectorAll("[id='admin']")
+        for(var i = 0; i < admin.length; i++) 
+        admin[i].style.display='block'
+
+        var user = document.querySelectorAll("[id='user']")
+        for(var i = 0; i < user.length; i++) 
+        user[i].style.display='none'
     }
 
     function showForm() {
