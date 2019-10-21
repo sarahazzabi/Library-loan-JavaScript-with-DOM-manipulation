@@ -14,6 +14,8 @@ for (var i = 0; i < addbtn.length; i++) {
     var button = addbtn[i];
     button.addEventListener('click', addToBasketClicked)
 }
+
+document.getElementsByClassName('btn-checkout')[0].addEventListener('click', checkoutClicked)
 }
 // Print msg error on registration form
 function printError(elemId, hintMsg) {
@@ -171,3 +173,28 @@ function validateForm(){
         }
         
     }
+
+    function checkoutClicked(event) {
+        var basketItems = document.getElementsByClassName('basket-items')[0]
+         if(confirm('Your total items are ' + basketItems.childElementCount + ' items'))
+         {
+             alert('Thank you for visiting Cummunity Library')
+         while (basketItems.hasChildNodes()) {
+             basketItems.removeChild(basketItems.firstChild)
+         }
+     }
+            else { 
+               alert('you have cancled your loan ')
+               // To be checked in order to loop checkout list and available list to return item back to available
+               var available = document.getElementsByClassName('availableList')[0]
+               var li = available.getElementsByClassName('item')
+               while (basketItems.hasChildNodes()) {
+                 basketItems.removeChild(basketItems.firstChild)
+             } 
+               for (var i = 0; i < li.length; i++) {        
+                 if(li[i].style.display == 'none') {
+                     li[i].style.display = 'block'   
+                 } 
+             } 
+             }
+         }    
