@@ -1,0 +1,356 @@
+* {
+    box-sizing: border-box;
+    font-family: Raleway;
+    color: #777;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+.main-header{
+    position: sticky;
+    top: 0;
+    border: 1px solid black;
+}
+.main-header .main-title {
+    
+    background-attachment: fixed;
+    background-image: url("images/book-sky-wood-sun-old-mystical-942473-pxhere.com.jpg");
+    background-size: cover;
+    padding-bottom: 10px;
+    width: 100%;
+}
+ .main-nav {
+    background-color: #ffcc80;
+    border: 0.5px solid rgb(243, 235, 235);
+    padding-bottom: 50px;
+}
+
+.main-nav a {
+    float: left;
+    display: block;
+    padding: 6px;
+    margin-top: 8px;
+
+  }
+
+  .main-nav .user-Data {
+    float: right;
+  }
+
+  .main-nav  .userData {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+    width:120px;
+  }
+
+  
+  .main-nav .user-Data .log-outbtn {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .main-nav .user-Data .log-outbtn:hover {
+    opacity:8;
+  }
+  
+
+.registrationForm {box-sizing: border-box;}
+
+input[type=text], input[type=email], input[type=number]{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=number]:focus, input[type=email]:focus{
+  background-color: #ddd;
+  outline: none;
+}
+
+
+.registerbtn {
+    font-size: 130%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .registerbtn:hover {
+    opacity:8;
+  }
+  
+
+.formcontainer {
+  padding: 16px;
+}
+
+.registrationForm {
+  display: block; 
+  width: auto;
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-image: url("images/book-sky-wood-sun-old-mystical-942473-pxhere.com.jpg ");
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+.form-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; 
+  border: 1px solid #888;
+  width: 40%; 
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+ 
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.library-name {
+    text-align: center;
+    margin: 0;
+    font-size: 2em;
+    font-family: 'Berkshire Swash', cursive;
+    font-weight: normal;
+    color: white;
+    text-shadow: 3px 3px 3px rgba(0,0,0,0.3);
+}
+
+.library-name-large {
+    font-size: 4em;
+}
+
+.section-header {
+    font-family: 'Berkshire Swash', cursive;
+    text-shadow: 3px 3px 3px rgba(216, 208, 208, 0.3);
+    font-weight: bolder;
+    color: #333;
+    text-align: center;
+    font-size: 2.5em;
+}
+
+.btn {
+    border-radius: .3em;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    padding: .67em .67em;
+    cursor: pointer;
+}
+
+
+.container {
+    max-width: 1010px;
+    margin: 0 auto;
+    padding: 0 1.5em;
+}
+
+.availableList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.item {
+    overflow: auto;
+    float: left;
+    width: 33%;
+    height: 50%;
+    margin-bottom: 50px;
+    padding: 0 30px;
+  }
+  
+  @media screen and (max-width: 650px) {
+    .item {
+      width: 100%;
+      display: block;
+    }
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .imgcontainer {
+    padding: 0 16px;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .imgcontainer::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .title, .frtitle, .ittitle {
+    white-space: nowrap; 
+    width: 100%; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    color: grey;
+    text-align: left; 
+  }
+
+.add-item, .remove-item, .update-item {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #20201e;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .add-item:hover, .remove-item:hover, .update-item:hover{
+    background-color: #ffcc80;
+  }
+
+  .basket-header {
+    font-weight: bold;
+    font-size: 1.25em;
+    color: #333;
+}
+
+.basket-column {
+    display:flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    margin-right: 1.5em;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+.basket-row {
+    display: flex;
+
+    
+}
+
+.basket-item {
+    width: 50%;
+
+}
+
+.basket-item-title {
+    color: #333;
+    margin-left: 0px;
+    font-size: 1.2em;
+}
+
+.basket-due {
+    width: 50%;
+    font-size: 1.2em;
+    color: #333;
+    text-align: center;
+}
+.basket-item-dueDate{
+    margin-right: 30px; 
+}
+
+.basket-row:last-child {
+    border-bottom: 1px solid black;
+}
+
+.basket-row:last-child .basket-column {
+    border: none;
+}
+
+.btn-danger {
+    color: white;
+    background-color: #EB5757;
+    border: none;
+    
+}
+
+.btn-danger:hover {
+    background-color: #CC4C4C;
+}
+
+
+  .btn-checkout{
+    display: block;
+    border: none;
+    margin: 40px auto 80px auto;
+    font-size: 1.75em;
+    color: white;
+    background-color: #20201e;
+    margin: 40px auto 80px auto;
+
+}
+
+    .btn-checkout:hover{
+    background-color: #ffcc80;
+
+}
+
+
+  .main-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    background-color: #ffcc80;
+    padding: .25em 0;
+}
+
+.main-footer-container {
+    display: flex;
+    align-items: center;
+}
+
+.main-footer-container ul {
+    flex-grow: 1;
+    text-align: end;
+}
+
+.footer-nav li {
+    display: inline-block;
+    display: inline;
+    padding: 0.5em;
+}
+
+.footer-nav img {
+    width: 30px;
+    height: 30px;
+}
