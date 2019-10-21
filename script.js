@@ -5,6 +5,9 @@ if (document.readyState == 'loading') {
 }
 
 function ready() {
+
+    window.addEventListener('mousewheel', showForm, false)
+
 var submitbtn = document.getElementsByClassName('registerbtn')
     submitbtn[0].addEventListener('click', validateForm)
 
