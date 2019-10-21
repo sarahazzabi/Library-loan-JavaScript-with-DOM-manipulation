@@ -32,6 +32,11 @@ var adminremove = document.getElementsByClassName('remove-item')
      for (var i = 0; i < adminupdate.length; i++) adminupdate[i].addEventListener('click', updateItem)
 }
 
+function showForm() {
+    var registerForm = document.getElementById('id01')
+    registerForm.style.display='block'  
+}
+
 function showEngTitle(){
     var itemList = document.getElementsByClassName('availableList')[0]
     var itemli = itemList.getElementsByClassName('item')
