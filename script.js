@@ -27,6 +27,9 @@ document.getElementsByClassName('btn-checkout')[0].addEventListener('click', che
 
 var adminremove = document.getElementsByClassName('remove-item')
      for (var i = 0; i < adminremove.length; i++) adminremove[i].addEventListener('click', removeItem)
+
+     var adminupdate = document.getElementsByClassName('update-item')
+     for (var i = 0; i < adminupdate.length; i++) adminupdate[i].addEventListener('click', updateItem)
 }
 
 function showEngTitle(){
@@ -246,5 +249,12 @@ function validateForm(){
          var removetarget = event.target
          removetarget.parentElement.parentElement.remove()
                 
+        }
+
+        function updateItem(event){
+            var updatetarget = event.target
+            var targetduedate = prompt("Please enter a new loan period", " ");
+            updatetarget.parentElement.getElementsByClassName('due-date')[0].innerHTML = targetduedate
+    
         }
     
