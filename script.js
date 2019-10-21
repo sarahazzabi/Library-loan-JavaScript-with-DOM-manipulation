@@ -24,6 +24,9 @@ for (var i = 0; i < addbtn.length; i++) {
 }
 
 document.getElementsByClassName('btn-checkout')[0].addEventListener('click', checkoutClicked)
+
+var adminremove = document.getElementsByClassName('remove-item')
+     for (var i = 0; i < adminremove.length; i++) adminremove[i].addEventListener('click', removeItem)
 }
 
 function showEngTitle(){
@@ -238,3 +241,10 @@ function validateForm(){
              } 
              }
          }    
+
+    function removeItem(event){
+         var removetarget = event.target
+         removetarget.parentElement.parentElement.remove()
+                
+        }
+    
