@@ -149,3 +149,25 @@ function validateForm(){
          }
 
     }
+
+    function removeBasketItem(event) {
+        var buttonClicked = event.target
+       
+    var basketItem = buttonClicked.parentElement.parentElement //li basket-item
+    var basketTitle = basketItem.getElementsByClassName('basket-item-title')[0].innerText
+    
+        var available = document.getElementsByClassName('availableList')[0]
+    
+        var li = available.getElementsByClassName('item')
+        for (var i = 0; i < li.length; i++) {
+            var targetTitle = li[i].getElementsByClassName('title')[0].innerText
+        
+            if(basketTitle.includes(targetTitle) == true) {
+                basketItem.remove()
+                li[i].style.display = 'block'
+                break
+            }
+            
+        }
+        
+    }
