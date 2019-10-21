@@ -58,6 +58,20 @@ var adminremove = document.getElementsByClassName('remove-item')
         user[i].style.display='none'
     }
 
+    function signoutAction(event){
+
+        var userinfoblock = event.target
+        var userDiv = userinfoblock.parentElement
+        var userNow = userDiv.getElementsByClassName('name')[0].innerText
+        userDiv.remove()
+        if(userNow.includes("Librarian")){
+            isnotadmin()
+            window.addEventListener('mousewheel', showForm, false)
+        }
+        else
+            window.location.reload(true)
+    }
+
     function showForm() {
     var registerForm = document.getElementById('id01')
     registerForm.style.display='block'  
