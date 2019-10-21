@@ -1,5 +1,26 @@
+if (document.readyState == 'loading') {
+    document.addEventListener('DOMContentLoaded', ready)
+} else {
+    ready()
+}
+
+function ready() {
 var submitbtn = document.getElementsByClassName('registerbtn')
-    submitbtn[0].addEventListener('click', validateForm);
+    submitbtn[0].addEventListener('click', validateForm)
+
+
+var addbtn = document.getElementsByClassName('add-item')
+for (var i = 0; i < addbtn.length; i++) {
+    var button = addbtn[i];
+    button.addEventListener('click', addToBasketClicked)
+}
+}
+// Print msg error on registration form
+function printError(elemId, hintMsg) {
+    document.getElementById(elemId).innerHTML = hintMsg;
+}
+
+
 function validateForm(){
     // Retrieving the values of form elements 
     var name = document.getElementById('namefield').value
@@ -95,4 +116,36 @@ function validateForm(){
             document.getElementById('emailfield').value = ""
            document.getElementById('yaerbirthfield').value = ""
    
+    }
+
+    function addToBasketClicked() {
+        var button = event.target
+        var libItem = button.parentElement.parentElement.parentElement
+        var title = libItem.getElementsByClassName('title')[0].innerText
+        var dueDate = libItem.getElementsByClassName('due-date')[0].innerText
+        libItem.style.display='none'
+        var today = new Date()
+        var due = new Date()
+        due.setDate(today.getDate() + Number(dueDate) )
+        var basketRow = document.createElement('li')
+        basketRow.classList.add('basket-row')
+        var basketItems = document.getElementsByClassName('basket-items')[0] // parent node
+     
+         var basketRowContents = `
+             <div class="basket-item basket-column">
+             <span class="basket-item-title ">${title}</span>
+             </div>
+             <div class = "basket-due basket-column">
+             <span class="basket-item-dueDate  ">${due.toDateString()}</span>
+             <button class="btn btn-danger " type="button">REMOVE</button>
+             </div>`
+             basketRow.innerHTML = basketRowContents
+             basketItems.append(basketRow)
+ 
+         var removeBasketItembtn = document.getElementsByClassName('btn-danger')
+         for (var i = 0; i < removeBasketItembtn.length; i++) {
+             var button = removeBasketItembtn[i]
+             button.addEventListener('click', removeBasketItem)
+         }
+
     }
