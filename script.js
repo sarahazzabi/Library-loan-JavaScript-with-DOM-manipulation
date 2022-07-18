@@ -78,32 +78,37 @@ var adminremove = document.getElementsByClassName('remove-item')
     }
 
 function showEngTitle(){
-    var itemList = document.getElementsByClassName('availableList')[0]
-    var itemli = itemList.getElementsByClassName('item')
+    let itemList = document.getElementsByClassName('availableList')[0]
+    let itemli = itemList.getElementsByClassName('item')
     for (var i = 0; i < itemli.length; i++) {
      itemli[i].getElementsByClassName('title')[0].style.display = 'block'
      itemli[i].getElementsByClassName('frtitle')[0].style.display = 'none'
      itemli[i].getElementsByClassName('ittitle')[0].style.display = 'none'
+     itemli[i].getElementsByClassName('imageSrc')[0].title = itemli[i].getElementsByClassName('title')[0].textContent
     }
 }
 
 function showItTitle(){
- var itemList = document.getElementsByClassName('availableList')[0]
- var itemli = itemList.getElementsByClassName('item')
+ let itemList = document.getElementsByClassName('availableList')[0]
+ let itemli = itemList.getElementsByClassName('item')
  for (var i = 0; i < itemli.length; i++) {
   itemli[i].getElementsByClassName('title')[0].style.display = 'none'
   itemli[i].getElementsByClassName('frtitle')[0].style.display = 'none'
   itemli[i].getElementsByClassName('ittitle')[0].style.display = 'block'
+  itemli[i].getElementsByClassName('imageSrc')[0].title = itemli[i].itemli[i].getElementsByClassName('ittitle')[0].textContent
+
  }
 }
 
 function showFrTitle(){
- var itemList = document.getElementsByClassName('availableList')[0]
- var itemli = itemList.getElementsByClassName('item')
+ let itemList = document.getElementsByClassName('availableList')[0]
+ let itemli = itemList.getElementsByClassName('item')
  for (var i = 0; i < itemli.length; i++) {
   itemli[i].getElementsByClassName('title')[0].style.display = 'none'
   itemli[i].getElementsByClassName('frtitle')[0].style.display = 'block'
   itemli[i].getElementsByClassName('ittitle')[0].style.display = 'none'
+  itemli[i].getElementsByClassName('imageSrc')[0].title = itemli[i].getElementsByClassName('frtitle')[0].textContent
+
  }
 }
 
@@ -126,7 +131,7 @@ function validateForm(){
     if(name == "") {
         printError("nameErr", "Please enter your name")
     } else {
-        var regex1 = /^[a-zA-Z\s]+$/               
+        var regex1 = /^[a-zA-Z \s]+$/               
         if(regex1.test(name) === false) {
             printError("nameErr", "Please enter a valid name")
         } else {
@@ -177,7 +182,7 @@ function validateForm(){
    }
    window.removeEventListener('mousewheel', showForm, false)
    document.getElementById('id01').style.display='none'
-   if(name.includes("admin") == true && birthYear.includes("1967")){ 
+   if(name.includes("admin") == true && birthYear.includes("1990")){ 
        name = "Librarian"
        isadmin()
    }
@@ -222,6 +227,7 @@ function validateForm(){
         due.setDate(today.getDate() + Number(dueDate) )
         var basketRow = document.createElement('li')
         basketRow.classList.add('basket-row')
+        basketRow.classList.add('mainEntry')
         var basketItems = document.getElementsByClassName('basket-items')[0] // parent node
      
          var basketRowContents = `
@@ -264,7 +270,36 @@ function validateForm(){
         }
         
     }
+    function checkoutClicked(event) {
+        var basketItems = document.getElementsByClassName('basket-items')[0]
+        var available = document.getElementsByClassName('availableList')[0]
+        var checkoutli = basketItems.getElementsByClassName('mainEntry')
+        var availableli = available.getElementsByClassName('item')
+         if(!confirm('Your total items are ' + basketItems.childElementCount + ' items'))
+         {
+             alert('You have cancled your loan ')
+             for(var i = 0; i < checkoutli.length ; i++){
+                 for(var j = 0; j < availableli.length; j++)
+                 { 
+                     var checkoutTitle = checkoutli[i].getElementsByClassName('basket-item-title')[0].innerText
+                     var availableTitle = availableli[j].getElementsByClassName('title')[0].innerText
+                     if(checkoutTitle.includes(availableTitle) == true){
+                        availableli[j].style.display = 'block'
+                        break;
+                     }
 
+                 }
+             }
+        } else 
+             alert('Thank you for visiting Cummunity Library')
+
+        while (basketItems.hasChildNodes()) {
+              basketItems.removeChild(basketItems.firstChild)
+            }      
+    }  
+
+
+/*
     function checkoutClicked(event) {
         var basketItems = document.getElementsByClassName('basket-items')[0]
          if(confirm('Your total items are ' + basketItems.childElementCount + ' items'))
@@ -275,7 +310,7 @@ function validateForm(){
          }
      }
             else { 
-               alert('you have cancled your loan ')
+               alert('You have cancled your loan ')
                // To be checked in order to loop checkout list and available list to return item back to available
                var available = document.getElementsByClassName('availableList')[0]
                var li = available.getElementsByClassName('item')
@@ -289,10 +324,10 @@ function validateForm(){
              } 
              }
          }    
-
+*/
     function removeItem(event){
          var removetarget = event.target
-         removetarget.parentElement.parentElement.remove()
+         removetarget.parentElement.parentElement.parentElement.remove()
                 
         }
 
