@@ -22,7 +22,4 @@ a.	A mechanism to add new items.
 b.	A mechanism to remove existing items.
 c.	A mechanism to change the due date for books and CD’s
 d.	A logout button to return to normal operation.
-Screenshots:
-Items_in_the_library.png
-User_registration.png
-checkout.png
+
