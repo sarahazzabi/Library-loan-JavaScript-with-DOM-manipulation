@@ -25,7 +25,7 @@ c.	A mechanism to change the due date for books and CD’s<br>
 d.	A logout button to return to normal operation.<br>
 
 
-<h3> Sreenshots:</h3>
+<h3> Screenshots:</h3>
 <br>
 <div>
    <img  class= "imageSrc" src="checkout.png" style="width:50%">
